@@ -12,7 +12,7 @@ client_accounts:
         clientId: '\d+' # Ensure clientId is numeric
 
 account_transactions:
-    path: /account/{account_id}/transactions/
+    path: /account/{account_id}/transactions
     controller: App\Controller\AccountController::getTransactionsByAccountId
     methods: ['GET']
     requirements:

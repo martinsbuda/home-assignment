@@ -12,7 +12,6 @@ class ClientFixture extends Fixture
     {
         // Create dummy clients and persist them to the database
         $client = new Client();
-
         $client->setName('John Doe');
         $manager->persist($client);
 
@@ -30,6 +29,10 @@ class ClientFixture extends Fixture
 
         $client = new Client();
         $client->setName('Liam Williams');
+        $manager->persist($client);
+
+        $client = new Client();
+        $client->setName('Jack Brown');
         $manager->persist($client);
 
         // Flush changes

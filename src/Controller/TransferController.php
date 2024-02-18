@@ -88,6 +88,11 @@ class TransferController extends AbstractController
             return false;
         }
 
+        // Check if the source and destination account IDs are the same
+        if ($request['sourceAccountId'] === $request['destinationAccountId']) {
+            return false;
+        }
+
         // Check if the amount is greater than 0
         if ($request['amount'] <= 0) {
             return false;

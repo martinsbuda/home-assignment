@@ -69,7 +69,7 @@ class TransferService
         ];
     }
 
-    private function transfer(Account $source_account, Account $destination_account, float $receiver_amount, float $sender_amount, float $exchange_rate): void
+    private function transfer(Account $source_account, Account $destination_account, float $receiver_amount, float $sender_amount, mixed $exchange_rate): void
     {
         // Ensure source account has sufficient balance
         if ($source_account->getBalance() < $sender_amount) {
@@ -86,9 +86,14 @@ class TransferService
         $transaction->setDestinationAccountId($destination_account->getId());
         $transaction->setAmount($receiver_amount); // use initial amount
         $transaction->setCurrencyId($destination_account->getCurrencyId()); // use initial currency
-        $transaction->setConvertedAmount($sender_amount); // use converted amount
-        $transaction->setConvertedCurrencyId($source_account->getCurrencyId()); // use converted currency
-        $transaction->setExchangeRate($exchange_rate);
+
+        // Add exchange rate, converted currency and converted amount only if conversion was performed
+        if ($source_account->getCurrencyId() !== $destination_account->getCurrencyId()) {
+            $transaction->setConvertedAmount($sender_amount); // use converted amount
+            $transaction->setConvertedCurrencyId($source_account->getCurrencyId()); // use converted currency
+            $transaction->setExchangeRate($exchange_rate);
+        }
+
         $transaction->setTransactionDate(new \DateTimeImmutable());
         $transaction->setCreatedAt(new \DateTimeImmutable());
 

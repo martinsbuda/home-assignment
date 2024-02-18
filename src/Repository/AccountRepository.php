@@ -32,6 +32,7 @@ class AccountRepository extends ServiceEntityRepository
             ->addSelect('c')
             ->where('a.client_id = :client_id')
             ->setParameter('client_id', $clientId)
+            ->orderBy('a.id', 'ASC')
             ->getQuery()
             ->getResult();
     }

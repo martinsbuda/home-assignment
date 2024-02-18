@@ -48,10 +48,7 @@ final class Version20240217110355 extends AbstractMigration
             converted_currency_id INT,
             transaction_date TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
             created_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
-            updated_at TIMESTAMP,
-            CONSTRAINT FK_source_account FOREIGN KEY (source_account_id) REFERENCES account (id) ON DELETE CASCADE,
-            CONSTRAINT FK_destination_account FOREIGN KEY (destination_account_id) REFERENCES account (id) ON DELETE CASCADE,
-            CONSTRAINT FK_currency FOREIGN KEY (currency_id) REFERENCES currency (id) ON DELETE CASCADE
+            updated_at TIMESTAMP
         )');
     }
 

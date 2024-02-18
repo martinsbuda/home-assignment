@@ -18,6 +18,16 @@ class ClientController extends AbstractController
 
     public function getAccountsByClientId($client_id): Response
     {
+
+        // Return an error response if the client is not found
+        $client = $this->accountRepository->find($client_id);
+        if (empty($client)) {
+            return new JsonResponse([
+                'success' => false,
+                'error' => 'Client not found'
+            ], Response::HTTP_NOT_FOUND);
+        }
+
         // Retrieve accounts associated with the given client ID
         $accounts = $this->accountRepository->findByClientId($client_id);
 
