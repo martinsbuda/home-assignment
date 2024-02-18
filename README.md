@@ -61,7 +61,7 @@ ___
 5. Run the Data Fixtures:
     ```bash
     php bin/console doctrine:fixtures:load
-    ```
+	```
 
 ### Deployment
 
@@ -76,30 +76,31 @@ cd deploy/docker
 
 The application has 3 methods:
 
-**GET /client/<id>/accounts** - Given a client ID, return a list of accounts (each client might have 0 or more accounts with different currencies).
+**GET /client/{client_id}/accounts** - Given a client ID, return a list of accounts (each client might have 0 or more accounts with different currencies).
+```bash
+Example:
 
-    Example:
-    ```bash
-    http://localhost/client/1/accounts
-    ```
+http://localhost/client/1/accounts
+```
 
-**GET /account/<id>/transactions** - Given an account ID, return transaction history (last transactions come first) and support result paging using “offset” and “limit” parameters.
+**GET /account/{account_id}/transactions** - Given an account ID, return transaction history (last transactions come first) and support result paging using “offset” and “limit” parameters.
+```bash
+Example:
 
-    Example:
-    ```bash
-    http://localhost/account/1/transactions?offset=5&limit=10
-    ```
+http://localhost/account/1/transactions?offset=5&limit=10
+```
 
 **POST /transfer** - Transfer funds between two accounts identified by IDs.
+```bash
+Example:
+http://localhost/transfer
 
-    Example:
-    ```bash
-    BODY
-        sourceAccountId:2
-        destinationAccountId:7
-        amount:12.34
-        currency:USD
-    ```
+BODY
+	sourceAccountId:2
+	destinationAccountId:7
+	amount:12.34
+	currency:USD
+```
 
 ### Testing
 
