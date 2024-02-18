@@ -3,3 +3,22 @@ controllers:
         path: ../src/Controller/
         namespace: App\Controller
     type: attribute
+
+client_accounts:
+    path: /accounts/{client_id}
+    controller: App\Controller\ClientController::getAccountsByClientId
+    methods: ['GET']
+    requirements:
+        clientId: '\d+' # Ensure clientId is numeric
+
+account_transactions:
+    path: /transactions/{account_id}
+    controller: App\Controller\AccountController::getTransactionsByAccountId
+    methods: ['GET']
+    requirements:
+        clientId: '\d+' # Ensure clientId is numeric
+
+transfer_funds:
+    path: /transfer
+    controller: App\Controller\TransferController::transferFunds
+    methods: ['POST']
