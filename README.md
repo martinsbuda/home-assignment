@@ -93,6 +93,7 @@ http://localhost/account/1/transactions?offset=5&limit=10
 **POST /transfer** - Transfer funds between two accounts identified by IDs.
 ```bash
 Example:
+
 http://localhost/transfer
 
 BODY
