@@ -5,14 +5,14 @@ controllers:
     type: attribute
 
 client_accounts:
-    path: /accounts/{client_id}
+    path: /client/{client_id}/accounts
     controller: App\Controller\ClientController::getAccountsByClientId
     methods: ['GET']
     requirements:
         clientId: '\d+' # Ensure clientId is numeric
 
 account_transactions:
-    path: /transactions/{account_id}
+    path: /account/{account_id}/transactions/
     controller: App\Controller\AccountController::getTransactionsByAccountId
     methods: ['GET']
     requirements:

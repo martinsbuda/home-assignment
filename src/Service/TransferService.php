@@ -50,8 +50,12 @@ class TransferService
         $exchange_access_key = $_ENV['EXCHANGE_API_KEY'];
 
         // Fetch exchange rate from the currency exchange service
-        $response = $this->httpClient->request('GET', "{$exchange_api_base_url}?access_key={$exchange_access_key}&source={$target_currency}&currencies={$source_currency}");
-        $data = $response->toArray();
+        try {
+            $response = $this->httpClient->request('GET', "{$exchange_api_base_url}?access_key={$exchange_access_key}&source={$target_currency}&currencies={$source_currency}");
+            $data = $response->toArray();
+        } catch (\Exception $e) {
+            throw new \Exception('Failed to fetch exchange rate', Response::HTTP_SERVICE_UNAVAILABLE);
+        }
 
         $exchange_rate = $data['quotes'][$target_currency . $source_currency] ?? null;
 
