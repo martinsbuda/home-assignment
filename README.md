@@ -79,21 +79,21 @@ The application has 3 methods:
 **GET /client/<id>/accounts** - Given a client ID, return a list of accounts (each client might have 0 or more accounts with different currencies).
 
     Example:
-    ```http
+    ```bash
     http://localhost/client/1/accounts
     ```
 
 **GET /account/<id>/transactions** - Given an account ID, return transaction history (last transactions come first) and support result paging using “offset” and “limit” parameters.
 
     Example:
-    ```http
+    ```bash
     http://localhost/account/1/transactions?offset=5&limit=10
     ```
 
 **POST /transfer** - Transfer funds between two accounts identified by IDs.
 
     Example:
-    ```http
+    ```bash
     BODY
         sourceAccountId:2
         destinationAccountId:7
