@@ -39,6 +39,7 @@ class TransactionFixture extends Fixture implements DependentFixtureInterface
         $transaction->setCurrencyId($currency['GBP']);
         $transaction->setExchangeRate(1.25972);
         $transaction->setConvertedAmount(12.597199);
+        $transaction->setConvertedCurrencyId($currency['USD']);
         $transaction->setTransactionDate(new \DateTimeImmutable('2024-02-18 13:18:31'));
         $transaction->setCreatedAt(new \DateTimeImmutable('2024-02-18 13:18:31'));
         $manager->persist($transaction);
@@ -51,6 +52,7 @@ class TransactionFixture extends Fixture implements DependentFixtureInterface
         $transaction->setCurrencyId($currency['GBP']);
         $transaction->setExchangeRate(1.25972);
         $transaction->setConvertedAmount(5.482548);
+        $transaction->setConvertedCurrencyId($currency['USD']);
         $transaction->setTransactionDate(new \DateTimeImmutable('2024-02-18 14:24:11'));
         $transaction->setCreatedAt(new \DateTimeImmutable('2024-02-18 14:24:11'));
         $manager->persist($transaction);
@@ -63,6 +65,7 @@ class TransactionFixture extends Fixture implements DependentFixtureInterface
         $transaction->setCurrencyId($currency['USD']);
         $transaction->setExchangeRate(0.79381);
         $transaction->setConvertedAmount(79.381);
+        $transaction->setConvertedCurrencyId($currency['GBP']);
         $transaction->setTransactionDate(new \DateTimeImmutable('2024-02-18 16:19:01'));
         $transaction->setCreatedAt(new \DateTimeImmutable('2024-02-18 16:19:01'));
         $manager->persist($transaction);
